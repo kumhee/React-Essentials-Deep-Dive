@@ -14,12 +14,10 @@ export default function Player({ initialName, symbol }) {
   }
 
   let editablePlayerName = <span className="player-name"> {playerName} </span>;
-  // let btnCaption = 'Edit';
 
   // 만약 isEditing이 true라면 입력 필드로 표시
   if (isEditing) {
     editablePlayerName = <input type="text" required value={playerName} onChange={handleChange} />;
-    // btnCaption = 'Save';
   }
 
   return (
