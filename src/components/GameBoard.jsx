@@ -6,26 +6,25 @@ const initialGameBoard = [
   [null, null, null],
 ];
 
-// map 함수를 사용하여 3x3 게임 보드를 렌더링
 export default function GameBoard() {
   const [gameBoard, setGameBoard] = useState(initialGameBoard);
 
   function handleSelectSquare(rowIndex, colIndex) {
     setGameBoard((prevGameBoard) => {
       const updatedBoard = [...prevGameBoard.map((innerArray) => [...innerArray])]; // 이전 게임 보드를 복사하여 새로운 배열 생성
-      prevGameBoard[rowIndex][colIndex] = 'X';
-      return prevGameBoard;
+      updatedBoard[rowIndex][colIndex] = 'X'; // prevGameBoard에서 rowIndex와 colIndex에 해당하는 위치를 'X'로 설정
+      return updatedBoard; //변경된 prevGameBoard를 반환
     });
   }
 
   return (
     <ol id="game-board">
-      {initialGameBoard.map((row, rowIndex) => (
+      {gameBoard.map((row, rowIndex) => (
         <li key={rowIndex}>
           <ol>
             {row.map((playerSymbol, colIndex) => (
               <li key={colIndex}>
-                <button>{playerSymbol}</button>
+                <button onClick={() => handleSelectSquare(rowIndex, colIndex)}>{playerSymbol}</button>
               </li>
             ))}
           </ol>

@@ -15,7 +15,7 @@ export default function Player({ initialName, symbol }) {
 
   let editablePlayerName = <span className="player-name"> {playerName} </span>;
 
-  // 만약 isEditing이 true라면 입력 필드로 표시
+  // isEditing이 true라면 입력 필드로 표시
   if (isEditing) {
     editablePlayerName = <input type="text" required value={playerName} onChange={handleChange} />;
   }
@@ -26,7 +26,7 @@ export default function Player({ initialName, symbol }) {
         {editablePlayerName}
         <span className="player-symbol"> {symbol} </span>
       </span>
-      <button onClick={handleEditClick}>{isEditing ? 'Save' : 'Edit'}</button>
+      <button onClick={handleEditClick}> {isEditing ? 'Save' : 'Edit'} </button>
     </li>
   );
 }
